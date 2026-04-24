@@ -67,6 +67,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     print("[SHUTDOWN] Shutting down.")
 
 
+from fastapi.responses import RedirectResponse
+
 # ── FastAPI application ─────────────────────────────────────────
 app: FastAPI = FastAPI(
     title="Breast Cancer Prediction API",
@@ -79,6 +81,12 @@ app: FastAPI = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
 )
+
+
+@app.get("/", include_in_schema=False)
+async def root() -> RedirectResponse:
+    """Redirect root to /docs."""
+    return RedirectResponse(url="/docs")
 
 
 # ═══════════════════════════════════════════════════════════════════
