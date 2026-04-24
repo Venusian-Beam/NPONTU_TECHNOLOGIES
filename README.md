@@ -152,7 +152,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 ### Screenshots
 
-Here is a screenshot of the FastAPI Interactive Docs (Swagger UI) that is automatically generated for our endpoints:
+Here is a screenshot of the FastAPI Interactive Docs (Swagger UI) that is automatically generated for my endpoints:
 
 ![FastAPI Swagger UI Docs](docs_screenshot.png)
 
@@ -224,19 +224,19 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-##  How We Monitor Health
+##  How I Monitor Health
 
 ### A. Data Checks (Data Drift) — `monitoring/drift.py`
 
-When data comes in, we match it against the average numbers our model learned during training:
+When data comes in, I match it against the average numbers my model learned during training:
 
-- We use a basic math test (Z-score) on every feature.
+- I use a basic math test (Z-score) on every feature.
 - If a feature looks way out of place (more than **2.0** standard deviations away), it triggers a warning.
-- This helps us quickly spot if the kind of tumours being checked are changing.
+- This helps me quickly spot if the kind of tumours being checked are changing.
 
 ### B. Guess Checks (Prediction Drift) — `monitoring/metrics.py`
 
-We keep a running tally of what the model is predicting:
+I keep a running tally of what the model is predicting:
 
 - It counts how many malignant vs benign guesses happen.
 - If the model gets stuck and guesses the same thing over **80%** of the time, it prints a **prediction drift alert**.
