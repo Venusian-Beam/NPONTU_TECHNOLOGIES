@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+logs/
+*.pyc
+venv/
+.env
+.vscode/
+.idea/
+*.log
+ml-system/logs/
+ml-system/.pytest_cache/
